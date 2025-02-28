@@ -28,12 +28,12 @@ public class BookService {
         return bookMapper.tobookResponseDto(book);
     }
 
-    public BookStore updateBookDetails(Integer id, BookStore bookStore){
+    public BookStore updateBookDetails(Integer id, BookDto bookDto){
         BookStore existingBook = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book Not Found"));
-        existingBook.setBookName(bookStore.getBookName());
-        existingBook.setBookAuthor(bookStore.getBookAuthor());
-        existingBook.setBookPublishYear(bookStore.getBookPublishYear());
-        existingBook.setBookQr(bookStore.getBookQr());
+        existingBook.setBookName(bookDto.BookName());
+        existingBook.setBookAuthor(bookDto.BookAuthor());
+        existingBook.setBookPublishYear(bookDto.BookPublishYear());
+        existingBook.setBookQr(bookDto.BookQr());
         return bookRepository.save(existingBook);
     }
 
